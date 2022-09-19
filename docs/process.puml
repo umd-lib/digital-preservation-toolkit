@@ -7,7 +7,7 @@ storage HDD {
 rectangle inventory as "preserve.py inventory"
 file inventory.csv as "manifest.csv"
 collections accessions
-collections deposits
+collections locations
 rectangle patsydb as "patsy-db"
 rectangle patsydbdeposit as "patsy-db"
 database PATSy
@@ -40,8 +40,8 @@ awsarchiver -> AWS
 AWS -> keypaths
 manifest.csv <-- keypaths
 manifest.csv -> patsydbdeposit
-patsydbdeposit -> deposits
-PATSy <-- deposits
+patsydbdeposit -> locations
+PATSy <-- locations
 
 files --> DART
 DART --> bag.tar
