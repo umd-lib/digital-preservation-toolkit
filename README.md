@@ -13,3 +13,9 @@ to include the code for preservation tools used in these processes.
 
 [Architecture Decision Records](docs/adr/) record key decisions made about
 this project.
+
+### Digital Preservation Process
+
+![process](docs/process.svg)
+
+*Source: [docs/process.puml](docs/process.puml)*

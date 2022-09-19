@@ -1,0 +1,50 @@
+@startuml
+skinparam linetype ortho
+
+storage HDD {
+    folder vendorfiles as "vendor files"
+}
+rectangle inventory as "preserve.py inventory"
+file inventory.csv as "manifest.csv"
+collections accessions
+collections deposits
+rectangle patsydb as "patsy-db"
+rectangle patsydbdeposit as "patsy-db"
+database PATSy
+node libdpiprocessing {
+    folder files
+    file manifest.csv
+    rectangle awsarchiver as "aws-archiver"
+    rectangle DART
+    collections keypaths as "key paths"
+    package bag.tar {
+        folder payload
+    }
+}
+file dartrunner as "dart-runner.json"
+cloud AWS
+cloud APTrust
+
+inventory.csv --> manifest.csv
+vendorfiles --> files
+
+vendorfiles -> inventory
+inventory --> inventory.csv
+inventory.csv -> patsydb
+patsydb -> accessions
+accessions -> PATSy
+
+files --> awsarchiver
+manifest.csv --> awsarchiver
+awsarchiver -> AWS
+AWS -> keypaths
+manifest.csv <-- keypaths
+manifest.csv -> patsydbdeposit
+patsydbdeposit -> deposits
+PATSy <-- deposits
+
+files --> DART
+DART --> bag.tar
+bag.tar --> APTrust
+APTrust -> dartrunner
+@enduml
