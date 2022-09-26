@@ -15,11 +15,12 @@ node libdpiprocessing {
     folder files
     file manifest.csv
     rectangle awsarchiver as "aws-archiver"
-    rectangle DART
+    rectangle DART as "dart-runner"
     collections keypaths as "key paths"
     package bag.tar {
         folder payload
     }
+    rectangle apt_upload
 }
 file dartrunner as "dart-runner.json"
 cloud AWS
@@ -36,8 +37,8 @@ accessions -> PATSy
 
 files --> awsarchiver
 manifest.csv --> awsarchiver
-awsarchiver -> AWS
-AWS -> keypaths
+awsarchiver -> keypaths
+keypaths -> AWS
 manifest.csv <-- keypaths
 manifest.csv -> patsydbdeposit
 patsydbdeposit -> locations
@@ -45,6 +46,7 @@ PATSy <-- locations
 
 files --> DART
 DART --> bag.tar
-bag.tar --> APTrust
+bag.tar --> apt_upload
+apt_upload --> APTrust
 APTrust -> dartrunner
 @enduml
