@@ -1,4 +1,4 @@
-@startuml
+@startuml Digital Preservation Process
 skinparam linetype ortho
 
 storage HDD {
@@ -21,8 +21,9 @@ node libdpiprocessing {
         folder payload
     }
     rectangle apt_upload
+    file dartrunner_json as "dart-runner.json"
+    file apt_upload_json as "apt_upload.json"
 }
-file dartrunner as "dart-runner.json"
 cloud AWS
 cloud APTrust
 
@@ -45,8 +46,10 @@ patsydbdeposit -> locations
 PATSy <-- locations
 
 files --> DART
-DART --> bag.tar
+DART ---> bag.tar
 bag.tar --> apt_upload
-apt_upload --> APTrust
-APTrust -> dartrunner
+apt_upload -> APTrust
+APTrust ..> apt_upload_json
+apt_upload --> apt_upload_json
+DART --> dartrunner_json
 @enduml
