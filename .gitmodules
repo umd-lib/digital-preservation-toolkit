@@ -1,9 +1,9 @@
 [submodule "preserve"]
 	path = preserve
 	url = git@github.com:umd-lib/preserve.git
-[submodule "patsy-db"]
-	path = patsy-db
-	url = git@github.com:umd-lib/patsy-db.git
+[submodule "patsy"]
+	path = patsy
+	url = git@github.com:umd-lib/patsy.git
 [submodule "aws-archiver"]
 	path = aws-archiver
 	url = git@github.com:umd-lib/aws-archiver.git
