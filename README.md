@@ -11,7 +11,7 @@ to include the code for preservation tools used in these processes.
 
 ## Tools
 
-* [patsy-db]: Command-line client for preservation asset tracking system (PATSy)
+* [patsy]: Command-line client for preservation asset tracking system (PATSy)
 * [preserve]: Command-line digital preservation utilities
 
 ## Documentation
@@ -25,5 +25,5 @@ this project.
 
 *Source: [docs/process.puml](docs/process.puml)*
 
-[patsy-db]: https://github.com/umd-lib/patsy-db
+[patsy]: https://github.com/umd-lib/patsy
 [preserve]: https://github.com/umd-lib/preserve
