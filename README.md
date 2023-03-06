@@ -20,6 +20,8 @@ to include the code for preservation tools used in these processes.
 [Architecture Decision Records](docs/adr/) record key decisions made about
 this project.
 
+[APTrust Algorithm](docs/APTrustSyncing.md)
+
 ### Digital Preservation Process
 
 ![process](docs/process.svg)
