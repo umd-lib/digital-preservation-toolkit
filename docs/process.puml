@@ -6,11 +6,15 @@ storage HDD {
 }
 rectangle inventory as "preserve.py inventory"
 file inventory.csv as "manifest.csv"
-collections accessions
-collections locations
-rectangle patsydb as "patsy-db"
-rectangle patsydbdeposit as "patsy-db"
-database PATSy
+
+rectangle patsydb as "patsy load"
+rectangle patsydbdeposit as "patsy load"
+node Kubernetes {
+    database PATSy
+    collections accessions
+    collections locations
+    rectangle patsyaptrust as "patsy sync"
+}
 node libdpiprocessing {
     folder files
     file manifest.csv
@@ -35,6 +39,8 @@ inventory --> inventory.csv
 inventory.csv -> patsydb
 patsydb -> accessions
 accessions -> PATSy
+APTrust --> patsyaptrust
+patsyaptrust --> locations
 
 files --> awsarchiver
 manifest.csv --> awsarchiver

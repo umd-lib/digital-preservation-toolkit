@@ -1,0 +1,37 @@
+# ADR 0002 - Migrate PATSy database to PostgreSQL
+
+Date: March 6, 2023
+
+## Status
+
+Accepted
+
+## Context
+
+The PATSy database is currently stored in an SQLite instance, with these
+properties:
+
+1. Database updates and rollbacks are easy in theory, by creating new copies of
+   the file.
+
+2. Due to the growing size of the database it is becoming more difficult to
+   transfer file copies over the network for backup purposes and to support
+   updates by multiple agents.
+
+3. Automated updates would be difficult to configure and maintain.
+
+[LIBITD-1754](https://umd-dit.atlassian.net/browse/LIBITD-1754)
+
+## Decision
+
+We will migrate the PATSy database to a PostgreSQL instance running in the
+Kubernetes cluster. This will support a larger database size, multi-user access
+for reads and writes, automatic backups, and DTAP environments.
+
+## Consequences
+
+We must take greater care to test and coordinate database schema rollouts with
+`patsy` program updates.
+
+We will make database backups automatic but require manual intervention if we
+need to roll the database back to previous versions.
